@@ -36,13 +36,22 @@ public class ListaLigada {
         return true;
     }
     public void remover(int valor){
-        No removerValor = new No(valor);
         No atual = inicio;
-        while (atual != null){
-            if(atual.valor == removerValor.valor){
-                atual = null;
+        No anterior = atual.proximo;
+
+        if(inicio.valor == valor ){
+            inicio = inicio.proximo;
+        }
+
+
+        while(atual != null){
+            if(atual.valor == valor){
+                anterior.proximo = atual.proximo;
+
             }
-            atual = inicio.proximo;
+            anterior = atual;
+            atual = atual.proximo;
+
         }
     }
 
