@@ -1,3 +1,5 @@
+package Aula01;
+
 public class ListaLigada {
     private No inicio;
 
