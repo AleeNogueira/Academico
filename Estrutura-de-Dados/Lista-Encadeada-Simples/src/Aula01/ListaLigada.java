@@ -44,8 +44,6 @@ public class ListaLigada {
         if(inicio.valor == valor ){
             inicio = inicio.proximo;
         }
-
-
         while(atual != null){
             if(atual.valor == valor){
                 anterior.proximo = atual.proximo;
@@ -53,7 +51,6 @@ public class ListaLigada {
             }
             anterior = atual;
             atual = atual.proximo;
-
         }
     }
 
