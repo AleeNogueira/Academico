@@ -22,10 +22,12 @@ public class ListaLigada {
     public void inserirIncio(int valor){
         No novo = new No(valor);
         if(inicio == null){
+            novo.proximo = inicio.proximo;
+            novo.anterior = inicio.anterior;
             inicio = novo;
         }else{
             novo.proximo = inicio;
-            novo.anterior = inicio.anterior;
+            novo = inicio.anterior;
             inicio = novo;
         }
     }
