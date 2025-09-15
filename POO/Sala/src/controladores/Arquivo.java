@@ -1,11 +1,14 @@
+package controladores;
+
+import classes.Funcionario;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class arquivo {
+public class    Arquivo {
     // atributos
 
-    public arquivo() {
+    public Arquivo() {
     }
 
     // metodos
@@ -14,6 +17,16 @@ public class arquivo {
     }
 
     public static void EscreverArquivo(String ARQUIVO, String TEXTO) throws IOException {
+    	/*
+    	 * Stream é um canal de comunicação usado para transferir dados entre uma origem (source) e um destino (destination).
+		   
+		   Tanto o InputStream como o OutputStream são usados para leitra e escrita de dados usando bytes, respectivamente
+		   
+		   FileOutputStream – abre o arquivo para escrita em formato binário.	
+		   OutputStreamWriter - Converte os bytes do OutputStream em caracteres, usando a codificação padrão do sistema (poderia ser especificada outra, como "UTF-8").
+    	 
+    	   BufferedWriter - Adiciona um buffer à escrita, tornando-a mais eficiente, pois não envia cada caractere diretamente ao arquivo, mas sim em blocos.
+    	 */
         OutputStream OS = new FileOutputStream(ARQUIVO, true);
         OutputStreamWriter OSW = new OutputStreamWriter(OS);
         BufferedWriter BW = new BufferedWriter(OSW);
@@ -22,8 +35,8 @@ public class arquivo {
         BW.close();
     }
 
-    public static ArrayList<funcionario> LerArquivo(String ARQUIVO) throws IOException {
-        ArrayList<funcionario> funcionarios = new ArrayList<>();
+    public static ArrayList<Funcionario> LerArquivo(String  ) throws IOException {
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
         InputStream IS = new FileInputStream(ARQUIVO);
         InputStreamReader ISR = new InputStreamReader(IS, "UTF-8");
@@ -31,6 +44,9 @@ public class arquivo {
 
         String linha = BR.readLine(); // Pular cabeçalho
         while ((linha = BR.readLine()) != null) {
+
+            //A maneira mais fácil de dividir uma string em Java é usar o metodo .split
+            //Ele divide a string a cada ocorrência da regra passada ao metodo
             String[] dados = linha.split(";" );
 
             String cargo = dados[0];
@@ -45,7 +61,7 @@ public class arquivo {
             int anoNascimento = Integer.parseInt(dados[9]);
             String sexo = dados[10];
 
-            funcionario f = new funcionario(cargo, salario, nome, telefone, email, endereco, cidade, estado, cep, anoNascimento, sexo);
+            Funcionario f = new Funcionario(cargo, salario, nome, telefone, email, endereco, cidade, estado, cep, anoNascimento, sexo);
             funcionarios.add(f);
         }
 
